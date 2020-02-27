@@ -7,4 +7,9 @@ describe MessageFilter do
     filter = MessageFilter.new('foo')
     expect(filter.detect?('hello from foo')).to be true
   end
+
+  it 'should not detect message without NG word' do
+    filter = MessageFilter.new('foo')
+    expect(filter.detect?('hello, world!')).to be false
+  end
 end
