@@ -3,17 +3,8 @@ require 'rspec'
 require './message_filter'
 
 describe MessageFilter, 'with argument "foo"' do
-  before do
-    @filter = MessageFilter.new('foo')
-  end
+  subject { MessageFilter.new('foo') }
 
-  subject { @filter }
-
-  it {
-    is_expected.to be_detect('hello from foo')
-  }
-
-  it {
-    is_expected.not_to be_detect('hello world')
-  }
+  it { is_expected.to be_detect('hello from foo') }
+  it { is_expected.not_to be_detect('hello world') }
 end
