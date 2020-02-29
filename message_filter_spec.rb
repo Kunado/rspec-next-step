@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'rspec'
+require 'rspec/its'
 require './message_filter'
 
 describe MessageFilter do
@@ -11,9 +12,7 @@ describe MessageFilter do
   context 'with argument "foo"' do
     subject { MessageFilter.new('foo') }
     it_behaves_like 'MessageFilter with argument "foo"'
-    it 'ng_words should not be empty' do
-      expect(subject.ng_words).not_to be_empty
-    end
+    its(:ng_words) { is_expected.not_to be_empty }
   end
 
   context 'with arguments "foo", "bar"' do
