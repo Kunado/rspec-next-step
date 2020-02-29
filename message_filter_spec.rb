@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'rspec'
 require 'rspec/its'
+require 'rspec/collection_matchers'
 require './message_filter'
 
 describe MessageFilter do
@@ -13,6 +14,9 @@ describe MessageFilter do
   context 'with argument "foo"' do
     subject { MessageFilter.new('foo') }
     it_behaves_like 'MessageFilter with argument "foo"'
+    it 'ng_words size is 1' do
+      expect(subject.ng_words).to have(1).item
+    end
   end
 
   context 'with arguments "foo", "bar"' do
